@@ -3,7 +3,7 @@
 #
 
 # Name of your site (displayed in the header)
-name: TungLe
+name: Tung Le
 
 # Short bio or description (displayed in the header)
 description: I am a well trained mathematician/programmer who is looking for new opportunities in data analyst field.
@@ -23,7 +23,7 @@ footer-links:
   flickr:
   github: mtungle
   instagram:
-  linkedin:https://www.linkedin.com/in/tung-le-55564972/
+  linkedin: https://www.linkedin.com/in/tung-le-55564972/
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: 
