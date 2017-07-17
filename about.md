@@ -8,7 +8,7 @@ PhD
 
 ### More Information
 
-A well trained mathematician/programmer is looking for new opportunities in data analyst field.
+I am a well trained mathematician/programmer who is looking for new opportunities in data analyst field.
 
 I am also an experienced research assistant with a demonstrated publication record in the Intelligent Transport Systems field. I worked as a research assistant at Swinburne University, improving network performance and users' experience by utilizing advanced techniques in modelling, optimization, and using a wide range of programming languages and analytical tools.
 
@@ -19,3 +19,5 @@ Competencies: data science, machine learning, Python, Java, SQL, C, C++, C#, Mat
 ### Contact me
 
 [mtungle@gmail.com](mailto:mtungle@gmail.com)
+
+https://www.linkedin.com/in/tung-le-55564972/
