@@ -129,7 +129,7 @@ The above table is a very small part of the full correlation coefficient matrix.
 
 ![Correlation matrix of same day stock price][logo1]
 
-[logo1]: mtungle.github.io/images/CorrelationCoefficientOfAustralianStocks/corMatrix_sameDay.jpeg
+[logo1]: https://github.com/mtungle/mtungle.github.io/blob/master/images/CorrelationCoefficientOfAustralianStocks/corMatrix_sameDay.jpeg
 
 ## Correlation coefficient of stocks on 1-day difference
 
@@ -149,5 +149,5 @@ for(i in 1:441)
 Visualize the correlation matrix.
 ![Correlation matrix of 1 day different stock price][logo2]
 
-[logo2]: mtungle.github.io/images/CorrelationCoefficientOfAustralianStocks/corMatrix_1DayDelay.jpeg
+[logo2]: https://github.com/mtungle/mtungle.github.io/blob/master/images/CorrelationCoefficientOfAustralianStocks/corMatrix_1DayDelay.jpeg
 Just by looking at this table, we can say with high certainty that there is no linear relation of stock price over the next business day.
