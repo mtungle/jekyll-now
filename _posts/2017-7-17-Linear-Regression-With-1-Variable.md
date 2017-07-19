@@ -19,4 +19,15 @@ The data source is a csv file with 2 columns where the first column is the city 
 8.5781,12
 6.4862,6.5987
 ```
+Data scatter plot
+
+```matlab
+fprintf('Plotting Data ...\n')
+data = load('ex1data1.txt');
+X = data(:, 1); y = data(:, 2);
+plot(x, y, 'rx', 'MarkerSize', 10); % Plot the data
+ylabel('Profit in $10,000s'); % Set the y?axis label
+xlabel('Population of City in 10,000s'); % Set the x?axis label
+```
+
 
