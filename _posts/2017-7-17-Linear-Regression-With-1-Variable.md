@@ -30,6 +30,19 @@ ylabel('Profit in $10,000s'); % Set the y?axis label
 xlabel('Population of City in 10,000s'); % Set the x?axis label
 ```
 
-![Data visualization][logo1]
+![Data visualization](https://mtungle.github.io/images/LinearRegression1Variable/data.png)
 
-[logo1]: https://mtungle.github.io/images/LinearRegression1Variable/data.pnj
+## The model and cost function
+
+Suppose we model the relationship between the population and the profit by a linear model as follows
+
+![Hypothesis](https://latex.codecogs.com/gif.latex?h_%7B%5Ctheta%7D%28x%29%3D%5Ctheta%5ETx%3D%5Ctheta_0%20&plus;%20%5Ctheta_1x_1)
+
+where `x_1` is the city population and `\theta` is our parameter. We would like to optimize the parameter `\theta_0` and `\theta_1` best fit the model line. It means minimizing the square distance between the actual profit and the hypothesis profit as stated in the following cost function.
+
+![Cost function](https://latex.codecogs.com/gif.latex?J%28%5Ctheta%29%3D%5Cfrac%7B1%7D%7B2m%7D%5Csum_%7B1%7D%5E%7Bm%7D%28h_%5Ctheta%28x%5E%7B%28i%29%7D%29-y%5E%7B%28i%29%7D%29%5E2)
+
+To solve the optimization problem, we may use either gradient descent algorithm or apply the closed form solution. First, we need to calculate the derivative of the cost function.
+
+![Derivative cost function](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20%5Ctheta_j%7D%3D%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5Em%28%5Ctheta_0x_0%5E%7B%28i%29%7D%20&plus;%20%5Ctheta_1x_1%5E%7B%28i%29%7D%20-%20y%5E%7B%28i%29%7D%29x_j%5E%7B%28i%29%7D)
+
