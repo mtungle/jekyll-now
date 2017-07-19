@@ -30,4 +30,6 @@ ylabel('Profit in $10,000s'); % Set the y?axis label
 xlabel('Population of City in 10,000s'); % Set the x?axis label
 ```
 
+![Data visualization][logo1]
 
+[logo1]: https://mtungle.github.io/images/LinearRegression1Variable/data.pnj
