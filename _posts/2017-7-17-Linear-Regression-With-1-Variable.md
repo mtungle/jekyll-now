@@ -100,5 +100,27 @@ end
 end
 ```
 Plot the Cost function over iterations to show convergence.
+```matlab
+plot(1:iterations,J_history)
+xlabel('Iterations')
+ylabel('Cost')
+```
 
 ![Convergence of cost](https://mtungle.github.io/images/LinearRegression1Variable/Convergence.png)
+
+## Solving by closed-form solution
+
+It is alot simpler in coding when it comes to closed-form solution.
+```matlab
+theta_c=(X'*X)^(-1)*X'*y
+```
+
+## Visualization of the fitting line
+```matlab
+hold on; % keep previous plot visible
+plot(X(:,2), X*theta, '-')
+legend('Training data', 'Linear regression')
+```
+
+![Final fitting line](https://mtungle.github.io/images/LinearRegression1Variable/FinalFittingLine.png)
+
