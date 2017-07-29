@@ -24,11 +24,11 @@ Data scatter plot
 
 ```matlab
 fprintf('Plotting Data ...\n')
-data = load('ex1data1.txt');
-X = data(:, 1); y = data(:, 2);
+data = load('ex1data2.txt');
+x = data(:, 1); y = data(:, 3);
 plot(x, y, 'rx', 'MarkerSize', 10); % Plot the data
-ylabel('Profit in $10,000s'); % Set the y?axis label
-xlabel('Population of City in 10,000s'); % Set the x?axis label
+ylabel('Property Price'); % Set the y axis label
+xlabel('Size (feet square)'); % Set the x axis label
 ```
 
 ![Data visualization](https://mtungle.github.io/images/LinearRegression1Variable/data.png)
