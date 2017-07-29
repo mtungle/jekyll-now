@@ -2,21 +2,23 @@ This project shows how to use linear regression to predict the data trend in Mat
 
 The data and business context are extracted from a bigger assignment from the Mahcine Learning course from Coursera at https://www.coursera.org/learn/machine-learning. 
 
+Suppose we want to predict the property price base on the historical data. We have data about sold houses in the past including size of the house, number of bedroom, and the sold price.
 
 ## The data and data visualization 
 
-The data source is a csv file with 2 columns where the first column is the city population in 10000s and the second column is the profit in $10000s.
+The data source is a csv file with 3 columns where the first column is the size of the house in square feet, the second column is the number of bedroom, and the third column is the price of the house.
 
 ```
-6.1101,17.592
-5.5277,9.1302
-8.5186,13.662
-7.0032,11.854
-5.8598,6.8233
-8.3829,11.886
-7.4764,4.3483
-8.5781,12
-6.4862,6.5987
+2104,3,399900
+1600,3,329900
+2400,3,369000
+1416,2,232000
+3000,4,539900
+1985,4,299900
+1534,3,314900
+1427,3,198999
+1380,3,212000
+1494,3,242500
 ```
 Data scatter plot
 
