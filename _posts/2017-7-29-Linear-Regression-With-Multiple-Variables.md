@@ -31,7 +31,7 @@ ylabel('Property Price'); % Set the y axis label
 xlabel('Size (feet square)'); % Set the x axis label
 ```
 
-![Data visualization](https://mtungle.github.io/images/LinearRegression1Variable/data.png)
+![Data visualization](https://mtungle.github.io/images/LinearRegressionMultipleVariables/sizeprice.png)
 
 ## The model and cost function
 
