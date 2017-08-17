@@ -28,18 +28,71 @@ hours the technician spent doing the test, and the score that the air plane rece
 
 ![Diagram](https://mtungle.github.io/images/Database-Design-of-RowHill-Airport/p1.png)
 
+## Relational Schemas
+```
+Airplane(Registration number, Model number)
+PK: Registration number
+FK: Model number refers to table Model
 
-Data scatter plot
+Model(Model number, capacity, weight)
+PK: Model number
 
-```matlab
-fprintf('Plotting Data ...\n')
-data = load('ex1data1.txt');
-X = data(:, 1); y = data(:, 2);
-plot(x, y, 'rx', 'MarkerSize', 10); % Plot the data
-ylabel('Profit in $10,000s'); % Set the y?axis label
-xlabel('Population of City in 10,000s'); % Set the x?axis label
+Employee(SSN, union membership)
+PK: SSN
+
+Traffic controller(SSN, exam date)
+PK: SSN
+FK: SSN refers to table Employee
+
+Technician(SSN, name, address, phone, salary)
+PK:SSN
+FK:SSN refers to table Employee
+
+Expertise(SSN, model number)
+PK: SSN, model number
+FK: SSN refers to table Employee
+FK: model number refers to table Model
+
+Test(FFA, name, maximum score)
+PK:FFA
+
+Test event(FFA, Registration number, SSN, date, hours, score)
+PK: FFA, Registration number, SSN
+FK: FFA refers to table Test
+FK: Registration number refers to table Airplane
+FK: SSN refers to table Employee
 ```
 
-![Data visualization](https://mtungle.github.io/images/LinearRegression1Variable/data.png)
+## Example Queries
 
-## The model and cost function
+```SQL
+SELECT unique SSN
+FROM Technician, Traffic controller
+WHERE Technician.SSN=Traffic controller.SSN
+List the social security number of the employees that is both technician and traffic controller.
+
+SELECT registration number
+FROM Air plane, Model
+WHERE Airplane.modelnumber=Model.modelnumber
+AND Model.capacity>500
+List all the air plane registration numbers which can carry more than 500 passengers.
+
+SELECT unique registration number
+FROM Testevent, Test
+Where Testevent.FAA=Test.FAA
+AND Testevent.score=Test.Maximumscore
+List all of air plane registration numbers that achieve a maximum score in at least one test.
+
+SELECT name, salary
+FROM Technician
+WHERE salary>90000
+List all name and salary of technicians who have salary greater than 90000.
+
+SELECT name
+FROM Technician, Testevent
+WHERE Testevent.SSN=Technician.SSN
+GROUP BY Testevent.SSN
+HAVING count(*)>1
+List all the name of technicians who have performed more than 1 test event.
+```
+
