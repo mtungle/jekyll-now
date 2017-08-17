@@ -26,7 +26,7 @@ hours the technician spent doing the test, and the score that the air plane rece
 
 ## Entity Relational Diagram
 
-![Diagram](https://mtungle.github.io/images/LinearRegression1Variable/data.png)
+![Diagram](https://mtungle.github.io/images/Database-Design-of-RowHill-Airport/p1.png)
 
 
 Data scatter plot
