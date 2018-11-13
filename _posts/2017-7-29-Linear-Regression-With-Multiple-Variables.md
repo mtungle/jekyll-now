@@ -1,3 +1,10 @@
+---
+layout: post
+title: Linear Regression with Multiple Variable
+description: This project shows how to use linear regression to predict the data trend in Matlab.
+tags: machine-learning matlab
+---
+
 This project shows how to use linear regression to predict the data trend in Matlab.
 
 The data and business context are extracted from a bigger assignment from the Mahcine Learning course from Coursera at https://www.coursera.org/learn/machine-learning. 
