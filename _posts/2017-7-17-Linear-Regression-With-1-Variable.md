@@ -2,7 +2,7 @@
 layout: post
 title: Linear Regression with 1 Variable
 description: This project shows how to use linear regression to predict the data trend in Matlab.
-tags: machine-learning matlab
+tags: Machine-Learning Matlab
 ---
 This project shows how to use linear regression to predict the data trend in Matlab.
 
