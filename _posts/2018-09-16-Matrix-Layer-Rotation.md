@@ -1,6 +1,6 @@
 ---
 layout: post
-description: Hackerrank
+description: Hackerrank problem
 tags: Python Algorithm
 ---
 
