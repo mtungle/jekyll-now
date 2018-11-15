@@ -5,7 +5,7 @@ description: Hackerrank
 tags: Python Algorithm
 ---
 
-# Problem Statement
+## Problem Statement
 
 You are given a 2D matrix of dimension *m x n* and a positive integer *r*. You have to rotate the matrix  times and print the resultant 
 matrix. Rotation should be in anti-clockwise direction.
@@ -50,6 +50,7 @@ Print each row of the rotated matrix as space-separated integers on separate lin
 ### Sample Input
 
 ### Sample Input #01
+
 ```
 4 4 2
 1 2 3 4
@@ -57,23 +58,29 @@ Print each row of the rotated matrix as space-separated integers on separate lin
 9 10 11 12
 13 14 15 16
 ```
+
 ### Sample Output #01
+
 ```
 3 4 8 12
 2 11 10 16
 1 7 6 15
 5 9 13 14
 ```
+
 ### Explanation #01
 
 The matrix is rotated through two rotations.
+
 ```
  1  2  3  4      2  3  4  8      3  4  8 12
  5  6  7  8      1  7 11 12      2 11 10 16
  9 10 11 12  ->  5  6 10 16  ->  1  7  6 15
 13 14 15 16      9 13 14 15      5  9 13 14
 ```
+
 ### Sample Input #02
+
 ```
 5 4 7
 1 2 3 4
@@ -82,7 +89,9 @@ The matrix is rotated through two rotations.
 19 20 21 22
 25 26 27 28
 ```
+
 ### Sample Output #02
+
 ```
 28 27 26 25
 22 9 15 19
@@ -90,9 +99,11 @@ The matrix is rotated through two rotations.
 10 14 20 7
 4 3 2 1
 ```
+
 ### Explanation 02
 
 The various states through 7 rotations:
+
 ```
 1  2  3  4      2  3  4 10    3  4 10 16    4 10 16 22
 7  8  9 10      1  9 15 16    2 15 21 22    3 21 20 28
@@ -106,23 +117,29 @@ The various states through 7 rotations:
  2 15  9 25     3 21 15 19     4 20 21 13    10 14 20  7
  1  7 13 19     2  1  7 13     3  2  1  7     4  3  2  1
 ```
+
 ### Sample Input #03
+
 ```
 2 2 3
 1 1
 1 1
 ```
+
 ### Sample Output #03
+
 ```
 1 1
 1 1
 ```
+
 ### Explanation #03
 
 All of the elements are the same, so any rotation will repeat the same matrix.
 
-# Solution
-```Python
+## Solution
+
+```python
 #!/bin/python3
 
 import math
