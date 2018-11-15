@@ -1,3 +1,10 @@
+---
+layout: post
+title: Matrix Layer Rotation
+description: Hackerrank
+tags: Python Algorithm
+---
+
 # Problem Statement
 
 You are given a 2D matrix of dimension *m x n* and a positive integer *r*. You have to rotate the matrix  times and print the resultant 
