@@ -1,6 +1,5 @@
 ---
 layout: post
-title: Matrix Layer Rotation
 description: Hackerrank
 tags: Python Algorithm
 ---
