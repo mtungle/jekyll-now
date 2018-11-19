@@ -1,3 +1,9 @@
+---
+layout: post
+description: The trading idea presented in this document could make a profit of 74% capital gain over the period from Jan 2017 to Feb 2018 for trading XBT CFD contract in BitMEX exchange.
+tags: Machine-Learning Matlab Python Trading Strategy
+---
+
 ## Summary
 The trading idea presented in this document could make a profit of 74% capital gain over the period from Jan 2017 to Feb 2018 for trading XBT CFD contract in BitMEX exchange. I have written a program to automate my trading strategy. The program went live on 05 Jun 2018. I also wrote another program to backtest my strategy.
 
