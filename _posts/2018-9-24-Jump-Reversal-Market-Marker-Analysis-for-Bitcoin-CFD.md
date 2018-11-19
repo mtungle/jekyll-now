@@ -110,7 +110,7 @@ The same simulation program used for backtesting was run repeatedly for differen
 
 Python code to place orders
 
-```Python
+```python
     def tracking_orders(self, buy_stop_orders, sell_stop_orders, buy_limit_orders, sell_limit_orders):
         """Converge the orders we currently have in the book with what we want to be in the book.
            This involves amending any open orders and creating new ones if any have filled completely.
@@ -200,7 +200,83 @@ Python code to place orders
 
 ```
 
+Matlab code for backtesting
 
+```matlab
+%%%%%%%%
+%Read data
+%%%%%%%%
+ 
+data=csvread('XBTUSD.Last_1-05_20-05.csv');
+%1st is opening price
+%2nd column is maximum
+%3rd column is minimum
+%4th is closing price
+ 
+%number of candle stick
+len=length(data(:,1));
+%len=100;
+ 
+%lets define a jump, a jump starts at the opening price and end at the max
+%or minimum
+jump_side=(data(:,4)-data(:,1))./abs((data(:,4)-data(:,1))); %plus for pump, minus for dump
+jump_side(isnan(jump_side))=0; %zero value jump is a pump
+jump_magnitude=zeros(len,1);
+jump_start=zeros(len,1);
+jump_end=zeros(len,1);
+ 
+for i=1:len
+    if jump_side(i)>0
+       jump_magnitude(i)=data(i,2)-data(i,1);
+       jump_start(i)=data(i,1);
+       jump_end(i)=data(i,2);
+    else
+       jump_magnitude(i)=data(i,1)-data(i,3);
+       jump_start(i)=data(i,1);
+       jump_end(i)=data(i,3);
+    end
+end
+ 
+%calculate PnL
+position=zeros(len,1);
+XBT_position=zeros(len,1);
+est_PnL=zeros(len,1);
+est_price=zeros(len,1);%average of start and close of candle stick
+Qty=20;
+%gap=31;
+no_trade=0;
+rebate_rate=0.0225/100;
+ 
+ 
+ 
+for i=2:len %lets not trade at the first candle just to avoid index zero
+    if jump_magnitude(i)*jump_side(i)>=gap
+        bought_price=jump_start(i)+gap;
+        XBT_position(i)=XBT_position(i-1)-Qty/bought_price + rebate_rate * Qty/bought_price;%plus rebate
+        %disp('reduced position');
+        position(i)=position(i-1)-Qty;
+        est_price(i)=(data(i,1)+data(i,4))/2;
+        est_PnL(i)=XBT_position(i)-position(i)/est_price(i); 
+        no_trade=no_trade+1;
+    
+    elseif jump_magnitude(i)*jump_side(i)<=-gap
+        bought_price=jump_start(i)-gap;
+        XBT_position(i)=XBT_position(i-1)+Qty/bought_price + rebate_rate * Qty/bought_price;%plus rebate
+        %disp('increased position');
+        position(i)=position(i-1)+Qty;
+        est_price(i)=(data(i,1)+data(i,4))/2;
+        est_PnL(i)=XBT_position(i)-position(i)/est_price(i); 
+        no_trade=no_trade+1;
+    else        
+        XBT_position(i)=XBT_position(i-1);
+        position(i)=position(i-1);
+        est_price(i)=(data(i,1)+data(i,4))/2;
+        est_PnL(i)=XBT_position(i)-position(i)/est_price(i); 
+    end
+end
+
+
+```
 
 
 
