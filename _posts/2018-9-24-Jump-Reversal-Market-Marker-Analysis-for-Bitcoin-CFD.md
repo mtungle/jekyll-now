@@ -96,6 +96,111 @@ The same simulation program used for backtesting was run repeatedly for differen
 
 ![GapOptimization](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p11-GapOptimization.png)
 
+### Period 05/06/2018 - 14/06/2018
+
+![GapOptimization](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p12-GapOptimization.png)
+
+## Appendix
+
+### Trade History
+
+![History](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p13-TradeHistory.png)
+
+### Sample Code
+
+Python code to place orders
+
+```Python
+    def tracking_orders(self, buy_stop_orders, sell_stop_orders, buy_limit_orders, sell_limit_orders):
+        """Converge the orders we currently have in the book with what we want to be in the book.
+           This involves amending any open orders and creating new ones if any have filled completely.
+           We assume all of the orders is stop market order"""
+        #tickLog = self.exchange.get_instrument()['tickLog']
+        to_amend = []
+        to_create = []
+        to_cancel = []
+        buy_stop_matched = 0
+        sell_stop_matched = 0
+        buy_limit_matched = 0
+        sell_limit_matched = 0
+        #existing_orders = self.exchange.get_orders()
+
+        # Check all existing orders and match them up with what we want to place.
+        # If there's an open one, we might be able to amend it to fit what we want.
+        for order in self.existing_orders:
+            try:
+                if order['side'] == 'Buy' and order['ordType']== 'Stop':
+                    desired_order = buy_stop_orders[buy_stop_matched]
+                    buy_stop_matched += 1
+                    if desired_order['stopPx'] != order['stopPx'] or desired_order['orderQty'] != order['orderQty']:
+                        to_amend.append({'orderID': order['orderID'], 'orderQty': desired_order['orderQty'],'stopPx': desired_order['stopPx'], 'side': order['side']})
+
+                if order['side'] == 'Sell' and order['ordType']== 'Stop':
+                    desired_order = sell_stop_orders[sell_stop_matched]
+                    sell_stop_matched += 1
+                    if desired_order['stopPx'] != order['stopPx'] or desired_order['orderQty'] != order['orderQty']:
+                        to_amend.append({'orderID': order['orderID'], 'orderQty': desired_order['orderQty'],'stopPx': desired_order['stopPx'], 'side': order['side']})
+
+                if order['side'] == 'Buy' and order['ordType']== 'Limit':
+                    desired_order = buy_limit_orders[buy_limit_matched]
+                    buy_limit_matched += 1
+                    if desired_order['price'] != order['price'] or desired_order['orderQty'] != order['orderQty']:
+                        to_amend.append({'orderID': order['orderID'], 'orderQty': desired_order['orderQty'],'price': desired_order['price'], 'side': order['side']})
+
+                if order['side'] == 'Sell' and order['ordType']== 'Limit':
+                    desired_order = sell_limit_orders[sell_limit_matched]
+                    sell_limit_matched += 1
+                    if desired_order['price'] != order['price'] or desired_order['orderQty'] != order['orderQty']:
+                        to_amend.append({'orderID': order['orderID'], 'orderQty': desired_order['orderQty'],'price': desired_order['price'], 'side': order['side']})
+
+            except IndexError:
+                # Will throw if there isn't a desired order to match. In that case, cancel it.
+                to_cancel.append(order)
+
+        while buy_stop_matched < len(buy_stop_orders):
+            to_create.append(buy_stop_orders[buy_stop_matched])
+            buy_stop_matched += 1
+
+        while sell_stop_matched < len(sell_stop_orders):
+            to_create.append(sell_stop_orders[sell_stop_matched])
+            sell_stop_matched += 1
+
+        while buy_limit_matched < len(buy_limit_orders):
+            to_create.append(buy_limit_orders[buy_limit_matched])
+            buy_limit_matched += 1
+
+        while sell_limit_matched < len(sell_limit_orders):
+            to_create.append(sell_limit_orders[sell_limit_matched])
+            sell_limit_matched += 1
+
+        if len(to_amend) > 0:
+            # This can fail if an order has closed in the time we were processing.
+            # The API will send us `invalid ordStatus`, which means that the order's status (Filled/Canceled)
+            # made it not amendable.
+            # If that happens, we need to catch it and re-tick.
+            try:
+                self.exchange.amend_bulk_orders(to_amend)
+            except requests.exceptions.HTTPError as e:
+                errorObj = e.response.json()
+                if errorObj['error']['message'] == 'Invalid ordStatus':
+                    logger.warn("Amending failed. Waiting for order data to converge and retrying.")
+                    sleep(0.5)
+                    return self.place_orders()
+                else:
+                    logger.error("Unknown error on amend: %s. Exiting" % errorObj)
+                    sys.exit(1)
+
+        if len(to_create) > 0:
+            logger.info("Creating %d orders:" % (len(to_create)))
+            self.exchange.create_bulk_orders(to_create)
+
+        # Could happen if we exceed a delta limit
+        if len(to_cancel) > 0:
+            self.exchange.cancel_bulk_orders(to_cancel)
+
+```
+
+
 
 
 
