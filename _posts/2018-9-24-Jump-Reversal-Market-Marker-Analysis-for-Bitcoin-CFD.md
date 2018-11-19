@@ -25,3 +25,34 @@ In the period 11 Jun to 14 Jun, the trading algorithms experienced a significant
 
 ![Wallet Balance](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p2-WalletBalance.png)
 
+## Backtesting Results
+
+Period: Jan 2017 – Feb 2018
+
+Number of trades: 31400
+
+Estimated capital (zero leverage): 600 USD
+
+Accumulate profits: 0.0634 XBT
+
+Capital growth for 1 year (assume 1 XBT = 7000 USD):  74%
+
+![Backtesting](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p3-Backtesting.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
