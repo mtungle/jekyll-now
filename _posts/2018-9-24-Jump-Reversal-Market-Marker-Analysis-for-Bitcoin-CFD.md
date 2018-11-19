@@ -23,3 +23,5 @@ In the period 11 Jun to 14 Jun, the trading algorithms experienced a significant
 
 ![PnL and position size for real trading account](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p1-PnL.png)
 
+![Wallet Balance](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p2-WalletBalance.png)
+
