@@ -66,6 +66,15 @@ while true:
 	sleep for sometime
 ```
 
+## Automation Implementation
+
+The trading automation program is written in Python. The program is run inside an Ubuntu cloud server. In every short time interval (a few seconds), the program will connect to BitMEX server, examine the current market conditions, then adjust orders if needed.
+
+![Infrastructure](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p6-Infrastructure.png)
+
+
+Automate trading in action. It shows bid and ask offers are automatically adjusted base on the current price
+![Action](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p7-Action.png)
 
 
 
