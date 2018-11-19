@@ -39,7 +39,21 @@ Capital growth for 1 year (assume 1 XBT = 7000 USD):  74%
 
 ![Backtesting](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p3-Backtesting.png)
 
+## Trading Idea
 
+Definition: Spike is a big price movement over a short amount of time (less than a minute).
+
+Big spikes are quite common in Bitcoin. After the spike, Bitcoin price is likely to move back to where it was. We would like to take advance of those spikes to buy lower and sell higher than the current average price. To do that, we simply set limit orders to always buy lower and sell higher than the current price. Those limit order price is adjusted periodically so without the spikes when the price movement is relatively slow the limit orders will never be filled. In short, we only buy low and sell high when the spikes occur.
+
+Let’s look at some scenario where the limit orders may be filled.
+
+Potential losing scenario. The price keeps moving down with downward spikes and retrace slowly. There is no upward spike so we would not have any sell order executed.
+
+![Losing](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p4-Losing.png)
+
+Potential winning scenario. There are both upward spikes and downward spikes.
+
+![Winning](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p5-Winning.png)
 
 
 
