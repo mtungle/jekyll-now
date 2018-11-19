@@ -55,6 +55,18 @@ Potential winning scenario. There are both upward spikes and downward spikes.
 
 ![Winning](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p5-Winning.png)
 
+### Trade pseudo code
+```
+while true:
+  update current market price
+	place a buy limit order at (current market price - spread constant)
+	place a sell limit order at (current market price + spread constant)
+	if position size exceed a threshold:
+	adjust spread constant in order to reduce position size
+	sleep for sometime
+```
+
+
 
 
 
