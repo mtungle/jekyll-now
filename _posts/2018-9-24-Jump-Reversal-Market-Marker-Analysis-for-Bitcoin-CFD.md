@@ -76,6 +76,31 @@ The trading automation program is written in Python. The program is run inside a
 Automate trading in action. It shows bid and ask offers are automatically adjusted base on the current price
 ![Action](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p7-Action.png)
 
+## Market Replay Simulation
+
+Ninja trader is used to feed historical data from BitMEX server and Matlab is used to replay the price movement.
+
+For backtesting our strategy, we need to recreate the spikes which happened in the past. Unfortunately, the historical data that available freely only has information about the candle sticks which is the opening price, closing price, minimum price, and maximum price. So the precise information about the spike is lost. We only can estimate the past spikes. The figure below shows how the spikes are recreated using historical candle data.
+
+![Spike](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p8-Spike.png)
+
+## Monte Carlo Simulation - Parameters Optimization
+
+### Period 01/05/2018 - 20/05/2018
+
+The same simulation program used for backtesting was run repeatedly for different values of gap between the current price and the limit order price for the recent historial data from 01/05 to 20/05.
+
+![GapOptimization](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p9-GapOptimization.png)
+
+![GapOptimization](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p10-GapOptimization.png)
+
+![GapOptimization](https://mtungle.github.io/images/Jump-Reversal-Marketmaker/p11-GapOptimization.png)
+
+
+
+
+
+
 
 
 
