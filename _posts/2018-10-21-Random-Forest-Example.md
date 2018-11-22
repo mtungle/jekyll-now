@@ -1,4 +1,10 @@
-We want to predict the max temperature for tomorrow in Seattle, WA using one year of past weather data
+---
+layout: post
+description: We want to predict the max temperature for tomorrow in Seattle, WA using one year of past weather data.
+tags: Machine-Learning Python
+---
+
+We want to predict the max temperature for tomorrow in Seattle, WA using one year of past weather data.
 
 ### Data Preparation
 
