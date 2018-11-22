@@ -5,7 +5,6 @@ description: Database design
 tags: SQL
 ---
 
-This is my solution of a university assignment.
 
 ## Business Description
 Computer Sciences Department frequent fliers have been complaining to RowHill Airport officials about the poor
