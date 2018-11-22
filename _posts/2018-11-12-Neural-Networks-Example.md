@@ -10,6 +10,7 @@ We want to classify a sample of fastion MNIST dataset..
 
 Data visualization
 
+```python
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
@@ -35,6 +36,6 @@ for i in range(5):
     plt.imshow(train_images[i], cmap=plt.cm.binary)
     plt.xlabel(class_names[train_labels[i]])
 ```
-
+![Data](https://mtungle.github.io/images/Neural-Networks-Example/data.png)
 
 
