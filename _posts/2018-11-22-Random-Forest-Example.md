@@ -1,3 +1,11 @@
+We want to predict the max temperature for tomorrow in Seattle, WA using one year of past weather data
+
+## Data Preparation
+
+Data visualization
+
+
+
 ```python
 import numpy as np
 import pandas as pd
@@ -8,7 +16,12 @@ features = pd.read_csv('temps.csv')
 
 # One-hot encode the data using pandas get_dummies
 features = pd.get_dummies(features)
+```
 
+
+
+
+```python
 # Use numpy to convert to arrays
 # Labels are the values we want to predict
 labels = np.array(features['actual'])
