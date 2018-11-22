@@ -4,7 +4,7 @@ We want to predict the max temperature for tomorrow in Seattle, WA using one yea
 
 Data visualization
 
-
+![Data](https://mtungle.github.io/images/Random-Forest-Example/data.png)
 
 ```python
 import numpy as np
