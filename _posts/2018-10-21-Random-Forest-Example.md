@@ -1,6 +1,6 @@
 We want to predict the max temperature for tomorrow in Seattle, WA using one year of past weather data
 
-## Data Preparation
+### Data Preparation
 
 Data visualization
 
@@ -16,12 +16,7 @@ features = pd.read_csv('temps.csv')
 
 # One-hot encode the data using pandas get_dummies
 features = pd.get_dummies(features)
-```
 
-
-
-
-```python
 # Use numpy to convert to arrays
 # Labels are the values we want to predict
 labels = np.array(features['actual'])
@@ -35,14 +30,25 @@ features = np.array(features)
 
 # Split the data into training and testing sets
 train_features, test_features, train_labels, test_labels = train_test_split(features, labels, test_size = 0.25, random_state = 42)
+```
+### Establish Baseline
 
+We would like our model works better than a reasonable guess. For simplicity, lets choose the historical average as the predicted max temperature.
+
+```python
 # The baseline predictions are the historical averages
 baseline_preds = test_features[:, feature_list.index('average')]
 # Baseline errors, and display average baseline error
 baseline_errors = abs(baseline_preds - test_labels)
 print('Average baseline error: ', round(np.mean(baseline_errors), 2))
+Average baseline error:  5.06
+```
 
+### Train Model
 
+Train model and make prediction on test sets.
+
+```python
 # Import the model we are using
 from sklearn.ensemble import RandomForestRegressor
 # Instantiate model with 1000 decision trees
@@ -62,7 +68,11 @@ mape = 100 * (errors / test_labels)
 # Calculate and display accuracy
 accuracy = 100 - np.mean(mape)
 print('Accuracy:', round(accuracy, 2), '%.')
+```
 
+### Performance Metrics
+
+```python
 # Get numerical feature importances
 importances = list(rf.feature_importances_)
 # List of tuples with variable and importance
@@ -86,3 +96,7 @@ plt.xticks(x_values, feature_list, rotation='vertical')
 plt.ylabel('Importance'); plt.xlabel('Variable'); plt.title('Variable Importances');
 
 ```
+![Variable](https://mtungle.github.io/images/Random-Forest-Example/variable.png)
+
+
+
