@@ -219,7 +219,9 @@ data_frame['loan_performance']=labels
 
 ## Data Visualization
 
+We scatterplot 'score', 'age', 'time as customer', 'age asset'. The big dots are BAD loans and the small dots are GOOD loans.
 
+![score](https://mtungle.github.io/images/Illion-Analytic-Exercise/score.png)
 
 
 
