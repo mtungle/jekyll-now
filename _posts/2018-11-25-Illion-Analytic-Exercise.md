@@ -134,7 +134,27 @@ Negative scores may be legit and have some meanings. However, due to lack of exp
 data_frame=data_frame[data_frame['score']>=0]
 ```
 
+#### Convert time
 
+Extract the following information as new columns: 'age of applicant', 'year of application', 'month of application'.
+
+```python
+#Convert date_of_application and date_of_birth into datetime
+new_column=pd.to_datetime(data_frame['date_of_application'])
+data_frame['date_of_application']=new_column
+new_column=pd.to_datetime(data_frame['date_of_birth'])
+data_frame['date_of_birth']=new_column
+
+#Add year_of_application, month_of_application, and age into the data_frame
+data_frame['year_of_application']=pd.DatetimeIndex(data_frame['date_of_application']).year
+data_frame['month_of_application']=pd.DatetimeIndex(data_frame['date_of_application']).month
+data_frame['year_of_birth']=pd.DatetimeIndex(data_frame['date_of_birth']).year
+data_frame.loc[data_frame['year_of_birth']>2017,'year_of_birth']-=100
+data_frame['age']=(2017 - data_frame['year_of_birth'])
+
+#Drop redundance date_of_application, date_of_birth, year_of_birth
+data_frame=data_frame.drop(['date_of_application', 'date_of_birth', 'year_of_birth'],axis=1)
+```
 
 
 
