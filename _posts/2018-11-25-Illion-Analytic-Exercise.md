@@ -432,8 +432,24 @@ Factors that are useful to predict loan performance: score(71%), age(13%), time_
 
 ![importance](https://mtungle.github.io/images/Illion-Analytic-Exercise/importance.png)
 
+## Tree Visualization
 
+![tree](https://mtungle.github.io/images/Illion-Analytic-Exercise/tree.png)
 
+```python
+#visualization
+data_feature_names = list(train_features)
+data_class_names= list(train_labels)
+# Visualize data
+dot_data = sklearn.tree.export_graphviz(clf,
+                                feature_names=data_feature_names,
+                                class_names=data_class_names,
+                                out_file=None,
+                                filled=True,
+                                rounded=True)
+graph = pydotplus.graph_from_dot_data(dot_data)
+graph.write_png('tree.png')
+```
 
 
 
