@@ -155,7 +155,58 @@ data_frame['age']=(2017 - data_frame['year_of_birth'])
 #Drop redundance date_of_application, date_of_birth, year_of_birth
 data_frame=data_frame.drop(['date_of_application', 'date_of_birth', 'year_of_birth'],axis=1)
 ```
+#### Convert 'age_asset' to integer, remove the '+' sign
 
+```python
+#Convert age_asset to integer, remove the '+' sign
+data_frame.loc[data_frame['age_asset']=='New','age_asset']='0'
+data_frame['age_asset'].replace(regex=True,inplace=True,to_replace='\+',value='')
+data_frame['age_asset']=pd.to_numeric(data_frame['age_asset'],errors='coerce')
+```
+
+#### Fix inconsistent data type
+
+```python
+#Fix typo in data entry
+
+#data_frame['residential_type'].unique()
+#Out[173]: 
+#array(['BOARD', 'OWN YOUR OWN HOME', 'RENT', 'SUPPLIED BY EMPLOYER',
+#       'LIVE WITH RELATIVES', 'OTHER', 'OWN', 'OWN YOUR OWN HOUSE'],
+#      dtype=object)
+data_frame['residential_type'].replace(inplace=True,to_replace=['OWN','OWN YOUR OWN HOME'],value='OWN YOUR OWN HOUSE')
+
+#data_frame['years_at_residence'].unique()
+#Out[177]: 
+#array(['1 - 3 YEARS', 'MORE THAN 5 YEARS', 'LESS THAN 1 YEAR',
+#       '3 - 5 YEARS', '1', '4', '3 YEARS', '5 YEARS OR MORE',
+#       '1 - 2 YEARS', '1 YEAR', 'OVER 4 YEARS', 'OVER 1 YEAR',
+#       'LESS THAN ONE YEAR', '1 YEAR OR MORE', '5 YEARS OR OVER',
+#       '1-3 YEARS', '3-5  YEARS', '3-5 YEARS'], dtype=object)
+data_frame['years_at_residence'].replace(inplace=True,to_replace=['5 YEARS OR MORE','5 YEARS OR OVER'],value='MORE THAN 5 YEARS')
+data_frame['years_at_residence'].replace(inplace=True,to_replace=['3 YEARS','OVER 4 YEARS','3-5  YEARS','3-5 YEARS','4'],value='3 - 5 YEARS')
+data_frame['years_at_residence'].replace(inplace=True,to_replace=['1','1 - 2 YEARS','1 YEAR','OVER 1 YEAR','1 YEAR OR MORE','1-3 YEARS'],value='1 - 3 YEARS')
+data_frame['years_at_residence'].replace(inplace=True,to_replace=['LESS THAN ONE YEAR'],value='LESS THAN 1 YEAR')
+
+#data_frame['occupation_type'].unique()
+#Out[180]: 
+#array(['FULL TIME', 'RETIRED', 'SELF EMPLOYED', 'PART TIME', 'OTHER',
+#       'HOMEMAKER', 'STUDENT', 'FULLTIME', 'FULL'], dtype=object)
+data_frame['occupation_type'].replace(inplace=True,to_replace=['FULLTIME','FULL'],value='FULL TIME')
+
+#data_frame['occupation_years'].unique()
+#Out[181]: 
+#array(['2 YEARS - 4 YEARS', 'MORE THAN 4 YEARS', 'LESS THAN 6 MONTHS',
+#       '6 MONTHS - 2 YEARS', '2 - 4 YEARS', '3 YEARS', '2 YEARS',
+#       '5 YEARS', '1 YEAR', 'OVER 4 YEARS', 'LESS THAN 1 YEAR',
+#       '1 YEAR OR OVER', '1 YEAR OR MORE', '5 YEARS OR MORE',
+#       '6 MOTHNS - 2 YEARS', 'LESS THEN 6 MONTHS'], dtype=object)
+data_frame['occupation_years'].replace(inplace=True,to_replace=['5 YEARS','OVER 4 YEARS','5 YEARS OR MORE'],value='MORE THAN 4 YEARS')
+data_frame['occupation_years'].replace(inplace=True,to_replace=['2 - 4 YEARS','3 YEARS','2 YEARS'],value='2 YEARS - 4 YEARS')
+data_frame['occupation_years'].replace(inplace=True,to_replace=['1 YEAR','LESS THAN 1 YEAR','1 YEAR OR OVER','1 YEAR OR MORE','6 MOTHNS - 2 YEARS'],value='6 MONTHS - 2 YEARS')
+data_frame['occupation_years'].replace(inplace=True,to_replace=['LESS THEN 6 MONTHS'],value='LESS THAN 6 MONTHS')
+
+```
 
 
 
