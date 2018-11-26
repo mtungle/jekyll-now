@@ -288,7 +288,73 @@ test_labels=test_frame['loan_performance']
 test_features=test_frame.drop(['loan_performance'],axis=1)
 ```
 
-Now we are ready to train our models.
+Now we are ready to train our models
+## Baseline Performance
+
+Our baseline model assumes all application is GOOD. The folowing results are obtained with the baseline model for the data after cleaning:
+
+Accuracy: 95.7%
+Precision: 95.7%
+
+The main reason for this high performance is we only 74 records of BAD loans in the total of about 1700 records. Nevertheless, we are going to improve the precision number.
+
+## Model Training
+
+We apply the training data set to a numbers of classification models including Naive Bays, K-nearest Neiboughs, Logistic Regression, Random Forest, Support Vector Machine, and Decision Tree.
+
+```
+###############################
+NAIVE BAYES
+Predicted  BAD  GOOD
+Actual              
+BAD          9     8
+GOOD        86   359
+Model accuracy (probability of right prediction):  0.7965367965367965
+Precision (Probability that a loan is actually GOOD after being predicted GOOD):  0.9782016348773842
+###############################
+K-NEAREST NEIGHBORS
+Predicted  BAD  GOOD
+Actual              
+BAD          2    15
+GOOD        52   393
+Model accuracy (probability of right prediction):  0.854978354978355
+Precision (Probability that a loan is actually GOOD after being predicted GOOD):  0.9632352941176471
+###############################
+SUPPORT VECTOR MACHINE
+Predicted  BAD  GOOD
+Actual              
+BAD          5    12
+GOOD        65   380
+Model accuracy (probability of right prediction):  0.8333333333333334
+Precision (Probability that a loan is actually GOOD after being predicted GOOD):  0.9693877551020408
+###############################
+LOGISTIC REGRESSION
+Predicted  BAD  GOOD
+Actual              
+BAD          5    12
+GOOD        60   385
+Model accuracy (probability of right prediction):  0.8441558441558441
+Precision (Probability that a loan is actually GOOD after being predicted GOOD):  0.9697732997481109
+###############################
+RANDOM FOREST
+Predicted  BAD  GOOD
+Actual              
+BAD          1    16
+GOOD         7   438
+Model accuracy (probability of right prediction):  0.9502164502164502
+Precision (Probability that a loan is actually GOOD after being predicted GOOD):  0.9647577092511013
+###############################
+DECISION TREE
+Predicted  BAD  GOOD
+Actual              
+BAD         12     5
+GOOD       106   339
+Model accuracy (probability of right prediction):  0.7597402597402597
+Precision (Probability that a loan is actually GOOD after being predicted GOOD):  0.9854651162790697
+```
+
+
+
 
 
 
