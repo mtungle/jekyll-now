@@ -223,6 +223,12 @@ We scatterplot 'score', 'age', 'time as customer', 'age asset'. The big dots are
 
 ![score](https://mtungle.github.io/images/Illion-Analytic-Exercise/score.png)
 
+![age](https://mtungle.github.io/images/Illion-Analytic-Exercise/age.png)
+
+![time](https://mtungle.github.io/images/Illion-Analytic-Exercise/time_as_customer.png)
+
+![asset](https://mtungle.github.io/images/Illion-Analytic-Exercise/age_asset.png)
+
 
 
 
