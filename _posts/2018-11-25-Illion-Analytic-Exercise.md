@@ -353,6 +353,84 @@ Model accuracy (probability of right prediction):  0.7597402597402597
 Precision (Probability that a loan is actually GOOD after being predicted GOOD):  0.9854651162790697
 ```
 
+```python
+##############################################
+# NAIVE BAYES
+clf = GaussianNB()
+# Train the Classifier
+clf.fit(train_features, train_labels)
+# Use the forest's predict method on the test data
+predictions = clf.predict(test_features)
+# Print model accuracy and True Positive rate
+print('###############################')
+print('NAIVE BAYES')
+Performance_Report(test_labels, predictions)
+
+##############################################
+# K-NEAREST NEIGHBORS
+clf = neighbors.KNeighborsClassifier()
+# Train the Classifier
+clf.fit(train_features, train_labels)
+# Use the forest's predict method on the test data
+predictions = clf.predict(test_features)
+# Print model accuracy and True Positive rate
+print('###############################')
+print('K-NEAREST NEIGHBORS')
+Performance_Report(test_labels, predictions)
+
+##############################################
+#SUPPORT VECTOR MACHINE
+clf = SVC(kernel='linear')
+# Train the Classifier
+clf.fit(train_features, train_labels)
+# Use the forest's predict method on the test data
+predictions = clf.predict(test_features)
+# Print model accuracy and True Positive rate
+print('###############################')
+print('SUPPORT VECTOR MACHINE')
+Performance_Report(test_labels, predictions)
+
+##############################################
+#LOGISTIC REGRESSION
+clf = LogisticRegression(random_state=0)
+# Train the Classifier
+clf.fit(train_features, train_labels)
+# Use the forest's predict method on the test data
+predictions = clf.predict(test_features)
+# Print model accuracy and True Positive rate
+print('###############################')
+print('LOGISTIC REGRESSION')
+Performance_Report(test_labels, predictions)
+
+##############################################
+#RANDOM FOREST
+clf = RandomForestClassifier(n_jobs=2, random_state=0)
+# Train the Classifier
+clf.fit(train_features, train_labels)
+# Use the forest's predict method on the test data
+predictions = clf.predict(test_features)
+# Print model accuracy and True Positive rate
+print('###############################')
+print('RANDOM FOREST')
+Performance_Report(test_labels, predictions)
+
+##############################################
+#DECISION TREE
+clf = DecisionTreeClassifier(criterion = "entropy", random_state = 100,
+ max_depth=3, min_samples_leaf=5)
+# Train the Classifier
+clf.fit(train_features, train_labels)
+# Use the forest's predict method on the test data
+predictions = clf.predict(test_features)
+# Print model accuracy and True Positive rate
+print('###############################')
+print('DECISION TREE')
+Performance_Report(test_labels, predictions)
+```
+
+Factors that are useful to predict loan performance: score(71%), age(13%), time_as_customer(10%), and age_asset(6%).
+
+![importance](https://mtungle.github.io/images/Illion-Analytic-Exercise/importance.png)
 
 
 
