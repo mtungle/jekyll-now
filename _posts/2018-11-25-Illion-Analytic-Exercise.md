@@ -78,10 +78,61 @@ From the data, we would like to predict the loan performance to be either GOOD o
 
 ## The Question
 
+Maximize model precision.
+
 From the data, the majority of loan performance is GOOD and there is only a very small portion of loan performance is actually BAD. Thus, correctly identifying the BAD loans is much more valuable than the GOOD loans. In practice, if a loan application is labeled as BAD, the application would not be proceeded, thus the lender would neither lose or gain money regardless on the prediction accuracy. However, if a loan application is predicted to be GOOD but turns out to be BAD, the lender would lose the lending money, so we want to eliminate this case. In other words, we want to maximize the probability that when a loan is predicted to be GOOD,  its performance is actually GOOD. The technical term for this probability is precision. Hence, we will maximize the model precision in later analysis.
 
+## Data Preparation
 
+#### Remove irrelevant columns
 
+'Occupation' should not be a factor to determine loan performance. Other reason is that this column has too many non-numeric values so it is not useful for our model anway.
+
+'Assessment outcome' column has only value 'Approved' or missing data. Thus, it will not provide any additional information to our model.
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import collections
+import sklearn
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC 
+from sklearn import neighbors
+from sklearn.naive_bayes import GaussianNB
+import pydotplus
+
+# Set random seed
+np.random.seed(1)
+
+#Pandas options
+pd.set_option('display.max_rows',200)
+pd.set_option('display.max_columns',20)
+pd.set_option('display.max_colwidth',20)
+
+data_frame = pd.read_csv('TestData.csv')
+
+#Drop irrelevant columns
+data_frame=data_frame.drop(['assessment_outcome','occupation'],axis=1)
+```
+
+#### Drop missing data entry
+
+```python
+#Drop missing data entry
+data_frame.dropna(inplace=True)
+```
+
+#### Drop negative score
+
+Negative scores may be legit and have some meanings. However, due to lack of explaination we do not include negative score in our analysis. 
+
+```python
+data_frame=data_frame[data_frame['score']>=0]
+```
 
 
 
