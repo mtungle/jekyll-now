@@ -1,6 +1,6 @@
 ---
 layout: post
-description: ou have been given a file containing information on a number of loan applicants.
+description: You have been given a file containing information on a number of loan applicants.
 tags: Machine-Learning Python
 ---
 
@@ -86,9 +86,9 @@ From the data, the majority of loan performance is GOOD and there is only a very
 
 #### Remove irrelevant columns
 
-'Occupation' should not be a factor to determine loan performance. Other reason is that this column has too many non-numeric values so it is not useful for our model anway.
+'Occupation' should not be a factor to determine loan performance. Other reason is that this column has too many non-numeric values so it is not useful for our model anyway.
 
-'Assessment outcome' column has only value 'Approved' or missing data. Thus, it will not provide any additional information to our model.
+'Assessment outcome' column has only 1 value 'Approved' or missing data. Thus, it will not provide any additional information to our model.
 
 ```python
 import numpy as np
@@ -264,7 +264,7 @@ plt.show()
 
 ## Dealing with Imbalanced Data - Up Sampling
 
-Machine learning models need the number of data points in each class to eb roughly in the same size in order to work properly. Otherwise, they will likely treat BAD loans as noise. One simple way to work around the problem is up sampling the minority data. It means replicating BAD loan data so that the number of BAD loan data is closely equal to the number of GOOD loan data.
+Machine learning models need the number of data points in each class to be roughly in the same size in order to work properly. Otherwise, they will likely treat BAD loans as noise. One simple way to work around the problem is up sampling the minority data. It means replicating BAD loan data so that the number of BAD loan data is closely equal to the number of GOOD loan data.
 
 First, we need to split the data into training set and testing set.
 
