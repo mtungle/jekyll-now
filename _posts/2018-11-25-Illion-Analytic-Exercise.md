@@ -205,8 +205,27 @@ data_frame['occupation_years'].replace(inplace=True,to_replace=['5 YEARS','OVER 
 data_frame['occupation_years'].replace(inplace=True,to_replace=['2 - 4 YEARS','3 YEARS','2 YEARS'],value='2 YEARS - 4 YEARS')
 data_frame['occupation_years'].replace(inplace=True,to_replace=['1 YEAR','LESS THAN 1 YEAR','1 YEAR OR OVER','1 YEAR OR MORE','6 MOTHNS - 2 YEARS'],value='6 MONTHS - 2 YEARS')
 data_frame['occupation_years'].replace(inplace=True,to_replace=['LESS THEN 6 MONTHS'],value='LESS THAN 6 MONTHS')
-
 ```
+
+#### Convert non-numeric data into binary
+
+```python
+#One-hot encode data
+labels=data_frame['loan_performance']
+data_frame=data_frame.drop('loan_performance',axis=1)
+data_frame=pd.get_dummies(data_frame)
+data_frame['loan_performance']=labels
+```
+
+## Data Visualization
+
+
+
+
+
+
+
+
 
 
 
