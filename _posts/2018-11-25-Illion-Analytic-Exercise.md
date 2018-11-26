@@ -229,10 +229,66 @@ We scatterplot 'score', 'age', 'time as customer', 'age asset'. The big dots are
 
 ![asset](https://mtungle.github.io/images/Illion-Analytic-Exercise/age_asset.png)
 
+```python
+# Visualize data
+length=len(data_frame['score'])
+mask=data_frame['loan_performance']=='GOOD'
+good_index=[]
+bad_index=[]
+for i in range(len(mask)):
+    if mask.iloc[i]==True:
+        good_index.append(i)
+    else:
+        bad_index.append(i)
 
+plt.scatter(good_index,data_frame['score'].loc[mask],s=1,label='GOOD')
+plt.scatter(bad_index,data_frame['score'].loc[~mask],label='BAD')
+plt.title('Score')
+plt.show()
 
+plt.scatter(good_index,data_frame['age'].loc[mask],s=1,label='GOOD')
+plt.scatter(bad_index,data_frame['age'].loc[~mask],label='BAD')
+plt.title('Age')
+plt.show()
 
+plt.scatter(good_index,data_frame['time_as_customer'].loc[mask],s=1,label='GOOD')
+plt.scatter(bad_index,data_frame['time_as_customer'].loc[~mask],label='BAD')
+plt.title('time_as_customer')
+plt.show()
 
+plt.scatter(good_index,data_frame['age_asset'].loc[mask],s=1,label='GOOD')
+plt.scatter(bad_index,data_frame['age_asset'].loc[~mask],label='BAD')
+plt.title('age_asset')
+plt.show()
+```
+
+## Dealing with Imbalanced Data - Up Sampling
+
+Machine learning models need the number of data points in each class to eb roughly in the same size in order to work properly. Otherwise, they will likely treat BAD loans as noise. One simple way to work around the problem is up sampling the minority data. It means replicating BAD loan data so that the number of BAD loan data is closely equal to the number of GOOD loan data.
+
+First, we need to split the data into training set and testing set.
+
+```python
+#Split the dataframe into train_frame and test_frame
+mask=np.random.rand(len(data_frame))<0.75
+train_frame=data_frame[mask]
+test_frame=data_frame[~mask]
+```
+The training data will be up sampling to train our models. However the testing data will be kept intact and only be used for testing.
+
+```python
+#Resampling bad loan data to balance the data classes between good and bad performance
+bad_loan_data=train_frame[train_frame['loan_performance']=='BAD']
+train_frame=train_frame.append([bad_loan_data]*10,ignore_index=True)
+
+train_labels=train_frame['loan_performance']
+train_features=train_frame.drop(['loan_performance'],axis=1)
+
+test_labels=test_frame['loan_performance']
+test_features=test_frame.drop(['loan_performance'],axis=1)
+```
+
+Now we are ready to train our models.
 
 
 
